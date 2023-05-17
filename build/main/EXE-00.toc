@@ -48,7 +48,7 @@
  [],
  False,
  False,
- 1684334984,
+ 1684360542,
  [('run.exe',
    'c:\\users\\andreanoc\\msoe-scraper\\venv\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
    'EXECUTABLE')])

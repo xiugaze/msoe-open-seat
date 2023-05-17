@@ -1,3 +1,4 @@
+import time
 import bs4
 import requests
 import signal
@@ -74,6 +75,7 @@ def main():
             notification.message = classcode + ' is now open'
             notification.send()
             classIsOpen = True
+        time.sleep(60)
 
 
 if __name__ == "__main__":
