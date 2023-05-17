@@ -1,25 +1,22 @@
-name: Package Application with Pyinstaller
-
+name: Publish
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    tags:
+      - '*'
 
 jobs:
   build:
-
+    name: Publish binaries
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Package Application
-      uses: JackMcKew/pyinstaller-action-windows@main
+    - uses: actions/checkout@v3
+    - name: Build
+      run: ./install.sh
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
       with:
-        path: ./
-
-    - uses: actions/upload-artifact@v2
-      with:
-        name: name-of-artifact
-        path: ./dist/main
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: dist/main/main.exe
+        tag: ${{ github.ref }}
+        overwrite: true
+        file_glob: true
